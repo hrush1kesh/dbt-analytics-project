@@ -34,3 +34,9 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   dbt_analytics_project:
     +materialized: table
+
+seeds:
+  rb-dbt:
+    +enabled: true
+    +database: DBT_RUSHI_RAW
+    +schema: JAFFLE_SHOP

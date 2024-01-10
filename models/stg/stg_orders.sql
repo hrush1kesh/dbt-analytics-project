@@ -12,7 +12,7 @@ SELECT
     total_amount,
     product_id
 FROM
-    {{ ref('ORDERS') }}
+    {{ source('RB_DATA','ORDERS') }}
 
 {%- if is_incremental() %}
 WHERE

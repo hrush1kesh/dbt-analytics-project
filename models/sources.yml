@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: RB_DATA
+    database: RAW_DB
+    schema: INPUT
+    tables:
+      - name: CUSTOMER
+      - name: ORDERS

@@ -3,4 +3,4 @@ SELECT
         from = ref('CUSTOMERS')
     ) }},
 FROM
-    {{ ref('CUSTOMERS') }}
+    {{ source('RB_DATA','CUSTOMERS') }}

@@ -1,30 +1,16 @@
-{{ config(
-    materialized = 'table'
-) }}
+{{ config(materialized="table") }}
 
-WITH ORDERS AS (
-
-    SELECT
-        *
-    FROM
-        {{ ref('STG_ORDERS') }}
-),
-PRODUCT AS (
-    SELECT
-        *
-    FROM
-        {{ ref('STG_PRODUCTS') }}
-)
-SELECT
-    P.PRODUCT_ID,
-    O.ORDER_ID,
-    O.CUSTOMER_ID,
-    O.ORDER_DATE,
-    O.TOTAL_AMOUNT,
-    P.PRODUCT_NAME,
-    P.CATEGORY,
-    P.PRICE
-FROM
-    PRODUCT P FULL
-    OUTER JOIN ORDERS O
-    ON P.PRODUCT_ID = O.PRODUCT_ID
+with
+    orders as (select * from {{ ref("STG_ORDERS") }}),
+    product as (select * from {{ ref("STG_PRODUCTS") }})
+select
+    p.product_id,
+    o.order_id,
+    o.customer_id,
+    o.order_date,
+    o.total_amount,
+    p.product_name,
+    p.category,
+    p.price
+from product p
+full outer join orders o on p.product_id = o.product_id
